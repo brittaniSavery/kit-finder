@@ -3,15 +3,10 @@ import AsyncSelect from "react-select/async";
 import "./App.css";
 
 function App() {
-  const [filter, setFilter] = useState("");
   const [selected, setSelected] = useState(null);
 
-  const loadKits = () => {
-    return fetch(`/search?filter=${filter}`).then((res) => res.json());
-  };
-
-  const handleFilterChange = (value) => {
-    setFilter(value);
+  const loadKits = (value) => {
+    return fetch(`/search?filter=${value}`).then((res) => res.json());
   };
 
   const handleSelectedChange = (value) => {
@@ -26,12 +21,12 @@ function App() {
         <AsyncSelect
           autoFocus
           cacheOptions
+          defaultOptions
           isClearable
           escapeClearsValue
           loadOptions={loadKits}
           getOptionLabel={(obj) => obj.shipping_tracking_code}
           getOptionValue={(obj) => obj.shipping_tracking_code}
-          onInputChange={handleFilterChange}
           onChange={handleSelectedChange}
         />
         {selected && (

@@ -14,9 +14,8 @@ async function getDB() {
 app.get("/search", (req, res) => {
   const { filter } = req.query;
   getDB().then((db) => {
-    const results = db.filter((kit) =>
-      kit.shipping_tracking_code.includes(filter)
-    );
+    const regex = new RegExp(`^${filter}`);
+    const results = db.filter((kit) => regex.test(kit.shipping_tracking_code));
     res.send(results);
   });
 });
