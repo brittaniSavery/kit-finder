@@ -1,0 +1,14 @@
+{
+  "name": "kit-finder",
+  "version": "1.0.0",
+  "scripts": {
+    "server-start": "node server/index.js",
+    "server-dev": "npx nodemon server/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}
